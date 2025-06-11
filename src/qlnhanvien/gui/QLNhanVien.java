@@ -126,6 +126,11 @@ public class QLNhanVien extends javax.swing.JFrame {
         });
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnLuu.setText("Lưu");
 
@@ -309,6 +314,28 @@ public class QLNhanVien extends javax.swing.JFrame {
         txtNamVL.setText((String.valueOf( tblDSNV.getValueAt(rowSelected, 2))));
         txtNamSinh.setText((String.valueOf( tblDSNV.getValueAt(rowSelected, 3))));
     }//GEN-LAST:event_tblDSNVMouseClicked
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        int rowSelectedToDelete = tblDSNV.getSelectedRow();
+        int confirm = JOptionPane.NO_OPTION;
+        
+        if(rowSelectedToDelete < 0) 
+            JOptionPane.showMessageDialog(null, "Chọn dòng để xoá");
+        else
+            confirm = JOptionPane.showConfirmDialog(null, 
+                "Bạn có thật sự muốn xoá nhân viên này không",
+                "Xác nhận xoá", JOptionPane.YES_NO_OPTION);
+        if(confirm == JOptionPane.YES_OPTION) {
+            String maNhanVienCanXoa = (String)tblDSNV.getValueAt(rowSelectedToDelete, 0);
+            Boolean bool = nhanVienService.remove(maNhanVienCanXoa);
+            if(bool) {
+                JOptionPane.showMessageDialog(null, "Xoá nhân viên thành công");
+                dtm.removeRow(rowSelectedToDelete);
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Xoá không thành công", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -56,11 +56,12 @@ public class DBUtil {
         return rs;
     }
 
-    public static int executeUpdate(String sql) {
+    public static int executeUpdate(String sql, Object... params) {
         int n = -1;
-        try {
-            PreparedStatement sm = conn.prepareStatement(sql);
-            n = sm.executeUpdate();
+        try(PreparedStatement ps = conn.prepareStatement(sql)) {
+            for(int i = 0; i < params.length; i++)
+                ps.setObject( i + 1, params[i]);
+            n = ps.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

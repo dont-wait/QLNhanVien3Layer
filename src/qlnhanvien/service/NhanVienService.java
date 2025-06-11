@@ -24,4 +24,8 @@ public class NhanVienService {
         return dao.getEmployees();
     }
     
+    public boolean remove(String maNhanVien) {
+        return dao.deleteNhanVienByMaNhanVien(maNhanVien);
+    }
+    
 }

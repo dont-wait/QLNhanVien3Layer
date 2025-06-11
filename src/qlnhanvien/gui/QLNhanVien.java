@@ -78,7 +78,7 @@ public class QLNhanVien extends javax.swing.JFrame {
         lblNamSinh = new javax.swing.JLabel();
         lblHoTen = new javax.swing.JLabel();
         lblMaSo = new javax.swing.JLabel();
-        txtNgayVL = new javax.swing.JTextField();
+        txtNamVL = new javax.swing.JTextField();
         txtNamSinh = new javax.swing.JTextField();
         txtHoTen = new javax.swing.JTextField();
         txtMaNV = new javax.swing.JTextField();
@@ -110,7 +110,7 @@ public class QLNhanVien extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin chi tiết", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
 
-        lblNgayVL.setText("Ngày VL:");
+        lblNgayVL.setText("Năm VL:");
 
         lblNamSinh.setText("Năm sinh:");
 
@@ -185,6 +185,11 @@ public class QLNhanVien extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDSNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDSNVMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDSNV);
         if (tblDSNV.getColumnModel().getColumnCount() > 0) {
             tblDSNV.getColumnModel().getColumn(0).setResizable(false);
@@ -217,7 +222,7 @@ public class QLNhanVien extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNamSinh)
-                            .addComponent(txtNgayVL))
+                            .addComponent(txtNamVL))
                         .addContainerGap())
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
@@ -235,7 +240,7 @@ public class QLNhanVien extends javax.swing.JFrame {
                     .addComponent(lblMaSo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNgayVL, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNgayVL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNamVL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtHoTen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,6 +302,14 @@ public class QLNhanVien extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cboPBActionPerformed
 
+    private void tblDSNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSNVMouseClicked
+        int rowSelected = tblDSNV.getSelectedRow();
+        txtMaNV.setText((String)tblDSNV.getValueAt(rowSelected, 0));
+        txtHoTen.setText((String)tblDSNV.getValueAt(rowSelected, 1));
+        txtNamVL.setText((String.valueOf( tblDSNV.getValueAt(rowSelected, 2))));
+        txtNamSinh.setText((String.valueOf( tblDSNV.getValueAt(rowSelected, 3))));
+    }//GEN-LAST:event_tblDSNVMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -341,6 +354,6 @@ public class QLNhanVien extends javax.swing.JFrame {
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JTextField txtNamSinh;
-    private javax.swing.JTextField txtNgayVL;
+    private javax.swing.JTextField txtNamVL;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,23 +13,22 @@ import java.util.Date;
 public class NhanVien {
     private String maNhanVien;
     private String tenNhanvien;
-    private Date ngayVaoLam;
-    private Date namVaoLam;
+    private int namVaoLam;
     private String email;
     private String phone;
     private int maPhongBan;
 
-    public NhanVien(String maNhanVien, String tenNhanvien, Date ngayVaoLam, Date namVaoLam, String email, String phone, int maPhongBan) {
+    public NhanVien() {
+    }
+    
+    public NhanVien(String maNhanVien, String tenNhanvien, int namVaoLam, String email, String phone, int maPhongBan) {
         this.maNhanVien = maNhanVien;
         this.tenNhanvien = tenNhanvien;
-        this.ngayVaoLam = ngayVaoLam;
         this.namVaoLam = namVaoLam;
         this.email = email;
         this.phone = phone;
         this.maPhongBan = maPhongBan;
     }
-    
-    public NhanVien(){}
 
     public String getMaNhanVien() {
         return maNhanVien;
@@ -47,19 +46,11 @@ public class NhanVien {
         this.tenNhanvien = tenNhanvien;
     }
 
-    public Date getNgayVaoLam() {
-        return ngayVaoLam;
-    }
-
-    public void setNgayVaoLam(Date ngayVaoLam) {
-        this.ngayVaoLam = ngayVaoLam;
-    }
-
-    public Date getNamVaoLam() {
+    public int getNamVaoLam() {
         return namVaoLam;
     }
 
-    public void setNamVaoLam(Date namVaoLam) {
+    public void setNamVaoLam(int namVaoLam) {
         this.namVaoLam = namVaoLam;
     }
 
@@ -89,7 +80,7 @@ public class NhanVien {
 
     @Override
     public String toString() {
-        return "NhanVien{" + "maNhanVien=" + maNhanVien + ", tenNhanvien=" + tenNhanvien + ", ngayVaoLam=" + ngayVaoLam + ", namVaoLam=" + namVaoLam + ", email=" + email + ", phone=" + phone + ", maPhongBan=" + maPhongBan + '}';
+        return "NhanVien{" + "maNhanVien=" + maNhanVien + ", tenNhanvien=" + tenNhanvien + ", namVaoLam=" + namVaoLam + ", email=" + email + ", phone=" + phone + ", maPhongBan=" + maPhongBan + '}';
     }
-    
+
 }

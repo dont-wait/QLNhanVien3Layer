@@ -5,7 +5,6 @@
 package qlnhanvien.dao;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import qlnhanvien.entity.NhanVien;
@@ -27,7 +26,7 @@ public class NhanVienDao implements Serializable{
             instance = new NhanVienDao();
         return instance;
     }
-    public static List<NhanVien> layDanhSachNhanVien() {
+    public static List<NhanVien> getEmployees() {
         return null;
     }
 }

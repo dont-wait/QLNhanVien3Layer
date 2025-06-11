@@ -21,10 +21,10 @@ public class DBUtil {
         try {
 
             //String dbURL = "jdbc:sqlserver://A103PC25\\Administrator:1433;databaseName=dbKhachHang;encrypt=true;trustServerCertificate=true;";
-            String dbURL = "jdbc:sqlserver://dontwait-inspiron15:1433;databaseName=QLNhanVien;encrypt=true;trustServerCertificate=true;";
+            String dbURL = "jdbc:sqlserver://DESKTOP-O7IVQ50\\DONTWAIT:1433;databaseName=QLNHANVIEN;encrypt=true;trustServerCertificate=true;";
 
             String user = "sa";
-            String pass = "Tansang990";
+            String pass = "sa123456";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(dbURL, user, pass);
 

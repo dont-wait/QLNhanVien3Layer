@@ -9,7 +9,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import qlnhanvien.entity.NhanVien;
+import qlnhanvien.entity.PhongBan;
 import qlnhanvien.service.NhanVienService;
+import qlnhanvien.service.PhongBanService;
 
 
 /**
@@ -19,7 +21,9 @@ import qlnhanvien.service.NhanVienService;
 public class QLNhanVien extends javax.swing.JFrame {
     private DefaultTableModel dtm;
     private List<NhanVien> dsNV = new ArrayList<>(); 
-    private NhanVienService service = new NhanVienService();
+    private List<PhongBan> dsPB = new ArrayList<>();
+    private PhongBanService phongBanService = new PhongBanService();
+    private NhanVienService nhanVienService = new NhanVienService();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(QLNhanVien.class.getName());
 
     /**
@@ -27,11 +31,20 @@ public class QLNhanVien extends javax.swing.JFrame {
      */
     public QLNhanVien() {
         initComponents();
-        loadNhanForTable();
+        loadDataForTable();
         setLocationRelativeTo(null);
     }
-    public void loadNhanForTable() {
-        List<NhanVien> dsNV = service.getAll();
+    public void loadDataForTable() {
+        dsPB = phongBanService.getAll();
+        dsNV = nhanVienService.getAll();
+        
+        //load combobox
+        cboPB.removeAllItems();
+        for(PhongBan pb : dsPB) {
+            cboPB.addItem(pb.getTenPhongBan());
+        }
+
+        //load datatable
         dtm = (DefaultTableModel) tblDSNV.getModel();
         for(NhanVien nv: dsNV) {
             Object[] rowData = {nv.getMaNhanVien(), 
@@ -88,6 +101,11 @@ public class QLNhanVien extends javax.swing.JFrame {
 
         cboPB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboPB.setToolTipText("");
+        cboPB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboPBActionPerformed(evt);
+            }
+        });
         jPanel1.add(cboPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 35, 307, 60));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin chi tiết", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
@@ -274,6 +292,10 @@ public class QLNhanVien extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void cboPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPBActionPerformed
+        
+    }//GEN-LAST:event_cboPBActionPerformed
 
     /**
      * @param args the command line arguments

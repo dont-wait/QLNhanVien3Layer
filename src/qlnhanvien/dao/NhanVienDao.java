@@ -33,6 +33,19 @@ public class NhanVienDao implements Serializable {
         return instance;
     }
 
+    public boolean addNhanVien(NhanVien nhanVienMoi) {
+        String sql = "INSERT INTO NhanVien VALUES(?, ?, ?, ?, ?, ?, ?)";
+        int rows = DBUtil.executeUpdate(sql, 
+                                        nhanVienMoi.getMaNhanVien(),
+                                        nhanVienMoi.getTenNhanvien(),
+                                        nhanVienMoi.getNamVaoLam(),
+                                        nhanVienMoi.getNamSinh(),
+                                        nhanVienMoi.getEmail(),
+                                        nhanVienMoi.getPhone(),
+                                        nhanVienMoi.getMaPhongBan()
+                                    );
+        return rows > 0;
+    }
     public boolean deleteNhanVienByMaNhanVien(String maNhanVien) {
         String sql = "DELETE FROM NhanVien WHERE maNhanVien = ?";
         int rowsDeleted = DBUtil.executeUpdate(sql, maNhanVien);

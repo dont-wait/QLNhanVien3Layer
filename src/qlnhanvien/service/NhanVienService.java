@@ -28,4 +28,7 @@ public class NhanVienService {
         return dao.deleteNhanVienByMaNhanVien(maNhanVien);
     }
     
+    public boolean add(NhanVien nhanVienMoi) {
+        return dao.addNhanVien(nhanVienMoi);
+    }
 }

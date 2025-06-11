@@ -36,8 +36,6 @@ public class NhanVienDao implements Serializable {
     public boolean deleteNhanVienByMaNhanVien(String maNhanVien) {
         String sql = "DELETE FROM NhanVien WHERE maNhanVien = ?";
         int rowsDeleted = DBUtil.executeUpdate(sql, maNhanVien);
-        System.out.println(maNhanVien);
-        System.out.println(rowsDeleted);
         DBUtil.closeConnection(conn);
         return rowsDeleted > 0;
     }

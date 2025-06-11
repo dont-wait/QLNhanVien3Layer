@@ -331,6 +331,10 @@ public class QLNhanVien extends javax.swing.JFrame {
             if(bool) {
                 JOptionPane.showMessageDialog(null, "Xoá nhân viên thành công");
                 dtm.removeRow(rowSelectedToDelete);
+                txtMaNV.setText("");
+                txtHoTen.setText("");
+                txtNamSinh.setText("");
+                txtNamVL.setText("");
             }
             else
                 JOptionPane.showMessageDialog(null, "Xoá không thành công", "Lỗi", JOptionPane.ERROR_MESSAGE);

@@ -14,6 +14,7 @@ public class NhanVien {
     private String maNhanVien;
     private String tenNhanvien;
     private int namVaoLam;
+    private Date namSinh;
     private String email;
     private String phone;
     private int maPhongBan;
@@ -21,10 +22,11 @@ public class NhanVien {
     public NhanVien() {
     }
     
-    public NhanVien(String maNhanVien, String tenNhanvien, int namVaoLam, String email, String phone, int maPhongBan) {
+    public NhanVien(String maNhanVien, String tenNhanvien, int namVaoLam, Date namSinh, String email, String phone, int maPhongBan) {
         this.maNhanVien = maNhanVien;
         this.tenNhanvien = tenNhanvien;
         this.namVaoLam = namVaoLam;
+        this.namSinh = namSinh;
         this.email = email;
         this.phone = phone;
         this.maPhongBan = maPhongBan;
@@ -57,6 +59,15 @@ public class NhanVien {
     public String getEmail() {
         return email;
     }
+
+    public Date getNamSinh() {
+        return namSinh;
+    }
+
+    public void setNamSinh(Date namSinh) {
+        this.namSinh = namSinh;
+    }
+    
 
     public void setEmail(String email) {
         this.email = email;

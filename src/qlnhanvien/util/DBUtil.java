@@ -44,7 +44,7 @@ public class DBUtil {
         }
     }
 
-    public ResultSet executeQuery(String sql) {
+    public static ResultSet executeQuery(String sql) {
         ResultSet rs = null;
         PreparedStatement sm;
         try {
@@ -56,7 +56,7 @@ public class DBUtil {
         return rs;
     }
 
-    public int executeUpdate(String sql) {
+    public static int executeUpdate(String sql) {
         int n = -1;
         try {
             PreparedStatement sm = conn.prepareStatement(sql);

@@ -4,14 +4,22 @@
  */
 package qlnhanvien.gui;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import qlnhanvien.entity.NhanVien;
+import qlnhanvien.service.NhanVienService;
+
 
 /**
  *
  * @author dontwait
  */
 public class QLNhanVien extends javax.swing.JFrame {
-    
+    private DefaultTableModel dtm;
+    private List<NhanVien> dsNV = new ArrayList<>(); 
+    private NhanVienService service = new NhanVienService();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(QLNhanVien.class.getName());
 
     /**
@@ -19,7 +27,25 @@ public class QLNhanVien extends javax.swing.JFrame {
      */
     public QLNhanVien() {
         initComponents();
+        loadNhanForTable();
         setLocationRelativeTo(null);
+    }
+    public void loadNhanForTable() {
+        List<NhanVien> dsNV = service.getAll();
+        dtm = (DefaultTableModel) tblDSNV.getModel();
+        for(NhanVien nv: dsNV) {
+            Object[] rowData = {nv.getMaNhanVien(), 
+                                nv.getTenNhanvien(), 
+                                nv.getNamVaoLam(),
+                                nv.getNamSinh(),
+                                nv.getEmail(),
+                                nv.getPhone(),
+                                nv.getMaPhongBan()
+            
+            };
+            dtm.addRow(rowData);
+        }
+        tblDSNV.setModel(dtm);
     }
 
     /**
@@ -120,10 +146,7 @@ public class QLNhanVien extends javax.swing.JFrame {
 
         tblDSNV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Mã nhân viên", "Tên nhân viên", "Năm vào làm", "Năm sinh", "Email", "Phone"

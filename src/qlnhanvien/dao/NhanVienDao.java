@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import qlnhanvien.entity.NhanVien;
+import java.sql.*;
 import java.sql.Connection;
 import qlnhanvien.util.DBUtil;
 
@@ -15,18 +16,44 @@ import qlnhanvien.util.DBUtil;
  *
  * @author dontwait
  */
-public class NhanVienDao implements Serializable{
+public class NhanVienDao implements Serializable {
+
     private static NhanVienDao instance;
     private Connection conn = DBUtil.makeConnection();
     private List<NhanVien> employees = new ArrayList<>();
-    
-    public NhanVienDao() {}
+
+    public NhanVienDao() {
+    }
+
+    //Chỉ được khởi tạo bằng duy nhất 1 lần
     public static NhanVienDao getInstance() {
-        if(instance == null)
+        if (instance == null) {
             instance = new NhanVienDao();
+        }
         return instance;
     }
-    public static List<NhanVien> getEmployees() {
-        return null;
+
+    public List<NhanVien> getEmployees() {
+
+        try {
+            String sql = "SELECT * FROM NhanVien";
+            ResultSet rs = DBUtil.executeQuery(sql);
+            while (rs.next()) {
+                employees.add(new NhanVien(rs.getString("maNhanVien"),
+                        rs.getString("tenNhanVien"),
+                        rs.getInt("namVaoLam"),
+                        rs.getDate("namSinh"),
+                        rs.getString("email"),
+                        rs.getString("soDienThoai"),
+                        rs.getInt("maPhong")
+                )
+                );
+            }
+            DBUtil.closeConnection(conn);
+
+        } catch (SQLException ex) {
+            System.getLogger(NhanVienDao.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        return employees;
     }
 }

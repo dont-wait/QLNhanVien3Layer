@@ -42,7 +42,10 @@ public class QLNhanVien extends javax.swing.JFrame {
     public void loadDataForTable() {
         //load datatable
         dtm = (DefaultTableModel) tblDSNV.getModel();
-        this.dtm.setRowCount(0);
+        if(dtm != null)
+            dtm.setRowCount(0);
+        dsNV.clear();
+        dsPB.clear();
         dsPB = phongBanService.getAll();
         dsNV = nhanVienService.getAll();
         
